@@ -8,7 +8,6 @@ const Button = (props) => (
   <button
     className={`button ${props.className}`}
     disabled={props.disabled}
-    style={props.disabled ? { cursor: 'pointer' } : {}}
     onClick={props.onClick}
   >
     {props.children}
@@ -16,10 +15,16 @@ const Button = (props) => (
 );
 
 Button.propTypes = {
-  className: PropTypes.string.isRequired,
-  disabled: PropTypes.bool.isRequired,
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
-  children: PropTypes.string.isRequired
+  children: PropTypes.string
+};
+
+Button.defaultProps = {
+  className: '',
+  disabled: false,
+  children: ''
 };
 
 export default Button;

@@ -6,19 +6,17 @@
   outline: none;
   padding: 10px 40px;
   color: #fff;
-}
-
-.button_disabled {
-  background-color: #bdbdbd;
-}
-
-.button_available {
   box-shadow: 0px 2px 4px rgba(116, 187, 253, 0.3);
   background-color: #74bbfd;
 }
 
-.button_hover,
-.button_pressed {
+.button:disabled {
+  cursor: pointer;
+  background-color: #bdbdbd;
+}
+
+.button:active,
+.button:hover {
   box-shadow: 0px 2px 4px rgba(116, 187, 253, 0.3);
   background-color: #49a7ff;
 }

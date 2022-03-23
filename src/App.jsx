@@ -7,11 +7,10 @@ import './App.css';
 function App() {
   return (
     <Button
-      className="button_hover"
-      disabled={false}
       onClick={() => alert('alert is opened')}
-      children="Click me to open an alert"
-    />
+    >
+      Click me to open an alert
+    </Button>
   );
 }
 
