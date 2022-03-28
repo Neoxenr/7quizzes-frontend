@@ -30,6 +30,7 @@ const Game = () => {
     <GameLayout>
       <div className="game">
         <Question question={question} />
+        {/* eslint-disable-next-line no-alert */}
         <Button onClick={() => alert('Answer is accepted')}>Answer</Button>
       </div>
     </GameLayout>
