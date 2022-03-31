@@ -5,7 +5,7 @@ module.exports = {
     es6: true,
     jest: true
   },
-  parser: '@typescript-eslint/parser',
+  parser: '@babel/eslint-parser',
   plugins: [
     'react',
     'react-hooks'
@@ -75,7 +75,7 @@ module.exports = {
         allowForLoopAfterthoughts: true
       }
     ],
-    'react-hooks/rules-of-hooks': 'warn',
+    'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react/jsx-props-no-spreading': 'off',
     'jsx-a11y/label-has-for': 'off',
@@ -85,18 +85,4 @@ module.exports = {
     'react/function-component-definition': 'off',
     'arrow-parens': 'off',
   },
-  overrides: [
-    {
-      files: ['**/*.{ts,tsx}'],
-      parser: '@typescript-eslint/parser',
-      plugins: [
-        'react',
-        'react-hooks',
-        '@typescript-eslint'
-      ],
-      globals: {
-        JSX: true,
-      }
-    }
-  ]
 };
