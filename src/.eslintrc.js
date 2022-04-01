@@ -3,33 +3,24 @@ module.exports = {
     browser: true,
     node: true,
     es6: true,
-    jest: true
+    jest: true,
   },
   parser: '@typescript-eslint/parser',
-  plugins: [
-    'react',
-    'react-hooks'
-  ],
-  extends: [
-    'airbnb',
-    'plugin:react/recommended'
-  ],
+  plugins: ['react', 'react-hooks'],
+  extends: ['airbnb', 'plugin:react/recommended'],
   parserOptions: {
     ecmaVersion: 6,
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     sourceType: 'module',
     requireConfigFile: false,
     babelOptions: {
-      presets: ['@babel/preset-react']
-    }
+      presets: ['@babel/preset-react'],
+    },
   },
   rules: {
-    'one-var': [
-      'error',
-      'never'
-    ],
+    'one-var': ['error', 'never'],
     'react/jsx-uses-vars': 'warn',
     'import/prefer-default-export': 'off',
     'no-unused-vars': ['warn'],
@@ -40,29 +31,21 @@ module.exports = {
       'warn',
       'never',
       {
-        png: 'always'
-      }
+        png: 'always',
+      },
     ],
     'react/no-multi-comp': 0,
     'react/jsx-filename-extension': [
       1,
       {
-        extensions: [
-          '.js',
-          '.jsx',
-          '.ts',
-          '.tsx'
-        ]
-      }
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
     ],
     'no-console': [
       'warn',
       {
-        allow: [
-          'warn',
-          'error'
-        ]
-      }
+        allow: ['warn', 'error'],
+      },
     ],
     'no-debugger': 'warn',
     'no-underscore-dangle': 0,
@@ -72,8 +55,8 @@ module.exports = {
     'no-plusplus': [
       'warn',
       {
-        allowForLoopAfterthoughts: true
-      }
+        allowForLoopAfterthoughts: true,
+      },
     ],
     'react-hooks/rules-of-hooks': 'warn',
     'react-hooks/exhaustive-deps': 'warn',
@@ -89,14 +72,10 @@ module.exports = {
     {
       files: ['**/*.{ts,tsx}'],
       parser: '@typescript-eslint/parser',
-      plugins: [
-        'react',
-        'react-hooks',
-        '@typescript-eslint'
-      ],
+      plugins: ['react', 'react-hooks', '@typescript-eslint'],
       globals: {
         JSX: true,
-      }
-    }
-  ]
+      },
+    },
+  ],
 };

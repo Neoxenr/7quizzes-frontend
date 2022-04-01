@@ -2,7 +2,7 @@ import React from 'react';
 
 import GameLayout from '../../layouts/GameLayout/GameLayout';
 import Question from '../../components/Question/Question';
-import Button from '../../components/Button/Button';
+import ButtonAntd from '../../components/Button/Button';
 
 import './style.css';
 
@@ -31,7 +31,9 @@ const Game = () => {
       <div className="game">
         <Question question={question} />
         {/* eslint-disable-next-line no-alert */}
-        <Button onClick={() => alert('Answer is accepted')}>Answer</Button>
+        <ButtonAntd onClick={() => alert('Answer is accepted')}>
+          Answer
+        </ButtonAntd>
       </div>
     </GameLayout>
   );
