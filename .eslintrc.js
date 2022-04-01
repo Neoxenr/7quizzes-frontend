@@ -23,7 +23,6 @@ module.exports = {
     'one-var': ['error', 'never'],
     'react/jsx-uses-vars': 'warn',
     'import/prefer-default-export': 'off',
-    'import/no-unresolved': 'off',
     'no-unused-vars': ['warn'],
     'react/no-unused-prop-types': 'warn',
     'react/prefer-stateless-function': 0,
