@@ -19,6 +19,13 @@ module.exports = {
       presets: ['@babel/preset-react'],
     },
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: ['.'],
+      },
+    },
+  },
   rules: {
     'one-var': ['error', 'never'],
     'react/jsx-uses-vars': 'warn',
