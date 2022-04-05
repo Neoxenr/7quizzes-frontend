@@ -7,7 +7,7 @@ import './style.css';
 
 const Question = (props) => {
   const answers = props.question.answers.map((answer) => (
-    <Radio className="answer" value={answer.id} key={answer.id} id={answer.id}>
+    <Radio className="question__answer" value={answer.id} key={answer.id} id={answer.id}>
       {answer.text}
     </Radio>
   ));

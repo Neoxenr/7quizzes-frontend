@@ -1,12 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import GameLayout from '../../layouts/GameLayout/GameLayout';
 import Question from '../../components/Question/Question';
-import ButtonAntd from '../../components/Button/Button';
-
-import './style.css';
+import Button from '../../components/Button/Button';
 
 const Game = () => {
+  const navigate = useNavigate();
+
   const question = {
     header: 'Question 1',
     text: 'Text of the question. \nLorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat?\n',
@@ -27,15 +27,13 @@ const Game = () => {
   };
 
   return (
-    <GameLayout>
-      <div className="game">
-        <Question question={question} />
-        {/* eslint-disable-next-line no-alert */}
-        <ButtonAntd onClick={() => alert('Answer is accepted')}>
-          Answer
-        </ButtonAntd>
-      </div>
-    </GameLayout>
+    <>
+      <Question question={question} />
+      {/* eslint-disable-next-line no-alert */}
+      <Button className="button" onClick={() => navigate('/finish-game')}>
+        Answer
+      </Button>
+    </>
   );
 };
 

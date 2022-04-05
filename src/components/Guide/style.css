@@ -1,0 +1,17 @@
+.guide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 125px auto 148px;
+}
+
+.guide__title {
+  font-size: 28px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 38px;
+}
+
+.guide__rules {
+  font-size: 15px;
+}

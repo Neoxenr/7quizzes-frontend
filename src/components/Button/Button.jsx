@@ -2,34 +2,33 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import { Button } from 'antd';
+import { Button as ButtonAntd } from 'antd';
 
 import './style.css';
 
-const ButtonAntd = (props) => (
-  <Button
+const Button = (props) => (
+  <ButtonAntd
     type="primary"
     shape="round"
-    size="middle"
-    className={`button ${props.className}`}
+    className={props.className}
     disabled={props.disabled}
     onClick={props.onClick}
   >
     {props.children}
-  </Button>
+  </ButtonAntd>
 );
 
-ButtonAntd.propTypes = {
+Button.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
   children: PropTypes.string,
 };
 
-ButtonAntd.defaultProps = {
+Button.defaultProps = {
   className: '',
   disabled: false,
   children: '',
 };
 
-export default ButtonAntd;
+export default Button;

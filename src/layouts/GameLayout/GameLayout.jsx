@@ -1,20 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
+import { Outlet } from 'react-router-dom';
 import { Layout } from 'antd';
+
 import Header from '../../components/Header/Header';
 
 import './style.css';
 
-const GameLayout = (props) => (
+const GameLayout = () => (
   <>
     <Header />
-    <Layout.Content>{props.children}</Layout.Content>
+    <Layout.Content className="page">
+      <Outlet />
+    </Layout.Content>
   </>
 );
-
-GameLayout.propTypes = {
-  children: PropTypes.element.isRequired,
-};
 
 export default GameLayout;

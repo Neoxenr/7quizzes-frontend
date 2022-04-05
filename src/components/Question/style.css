@@ -1,7 +1,7 @@
 .question {
-  margin: 214px 0 127px 150px;
   display: flex;
   align-items: center;
+  margin: 214px 0 127px 150px;
 }
 
 .question__body {
@@ -25,7 +25,7 @@
   color: #000;
 }
 
-.answer {
+.question__answer {
   font-size: 25px;
   font-weight: 400;
   color: #000;
