@@ -1,27 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { Radio, Space } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import { Radio, Space, Form } from 'antd';
+import Button from '../Button/Button';
 
 import './style.css';
 
 const Question = (props) => {
+  const navigate = useNavigate();
+
+  const [selectedAnswer, selectAnswer] = useState(null);
+
   const answers = props.question.answers.map((answer) => (
-    <Radio className="question__answer" value={answer.id} key={answer.id} id={answer.id}>
+    <Radio className="question__answer" value={answer.id} key={answer.id}>
       {answer.text}
     </Radio>
   ));
 
   return (
-    <div className="question">
-      <div className="question__body">
+    <Form className="question">
+      <Form.Item className="question__body">
         <header className="question__title">{props.question.header}</header>
         <p className="question__text">{props.question.text}</p>
-      </div>
-      <Radio.Group>
-        <Space direction="vertical">{answers}</Space>
-      </Radio.Group>
-    </div>
+      </Form.Item>
+      <Form.Item className="questions__answers" name="answer">
+        <Radio.Group onChange={(event) => selectAnswer(event.target.value)}>
+          <Space direction="vertical">{answers}</Space>
+        </Radio.Group>
+      </Form.Item>
+      <Form.Item className="question__send-button">
+        <Button className="button" disabled={!selectedAnswer} onClick={() => navigate('/finish-game')}>
+          Answer
+        </Button>
+      </Form.Item>
+    </Form>
   );
 };
 
