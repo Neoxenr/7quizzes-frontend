@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import 'antd/dist/antd.css';
 
@@ -11,8 +12,10 @@ import GameLayout from './layouts/GameLayout/GameLayout';
 
 import './index.css';
 
+import store from './store/store';
+
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<GameLayout />}>
@@ -22,6 +25,6 @@ ReactDOM.render(
         </Route>
       </Routes>
     </BrowserRouter>
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root'),
 );
