@@ -1,12 +1,7 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
+import rootReducer from './reducers/rootReducer';
 
-import rulesReducer from './reducers/rulesReducer';
-import visibilityReducer from './reducers/visibilityReducer';
-
-const store = createStore(
-  combineReducers({ rules: rulesReducer, isVisible: visibilityReducer }),
-  applyMiddleware(thunk),
-);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export default store;
