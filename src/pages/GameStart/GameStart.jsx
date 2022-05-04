@@ -40,7 +40,7 @@ const GameStart = () => {
     <div className="guide">
       <header className="guide__title">Game rules</header>
       <Rules rules={rules} />
-      <Button disabled={isDisabled} className="button" onClick={handleClick}>Start</Button>
+      <Button disabled={isDisabled} onClick={handleClick}>Start</Button>
     </div>
   );
 };

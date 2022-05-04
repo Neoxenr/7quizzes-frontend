@@ -75,12 +75,12 @@ const Question = (props) => {
       <Form.Item className="question__send-button">
         {!isAnswered
           ? (
-            <Button className="button" disabled={!selectedAnswer} onClick={handleAnswerClick}>
+            <Button disabled={!selectedAnswer} onClick={handleAnswerClick}>
               Answer
             </Button>
           )
           : (
-            <Button className="button" disabled={!selectedAnswer} onClick={handleNextClick}>
+            <Button disabled={!selectedAnswer} onClick={handleNextClick}>
               Next
             </Button>
           )}

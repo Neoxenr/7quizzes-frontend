@@ -16,6 +16,9 @@ import {
   GAME_ANSWER_QUESTION_FETCH,
   GAME_ANSWER_QUESTION_SUCCESS,
   GAME_ANSWER_QUESTION_ERROR,
+  SIGNIN_FETCH,
+  SIGNIN_ERROR,
+  SIGNIN_SUCCESS,
 } from './actionsTypes';
 
 import {
@@ -24,9 +27,11 @@ import {
   postNewGameRequest,
   getQuestionRequest,
   postAnswerQuestionRequest,
+  signInRequest,
 } from '../../fetcher/fetcher';
+import { checkStatus } from '../../utilities/utilities';
 
-export const getRules = () => (dispatch) => {
+export const getRules = () => async (dispatch) => {
   dispatch({ type: GET_RULES_FETCH });
 
   const rulesResponse = getRulesRequest();
@@ -55,7 +60,7 @@ export const getRoom = () => async (dispatch) => {
     .then((data) => {
       dispatch({
         type: GET_ROOM_SUCCESS,
-        roomId: data[0]?.roomId,
+        roomId: data[data.length - 1]?.roomId,
       });
     })
     .catch((error) => {
@@ -64,7 +69,7 @@ export const getRoom = () => async (dispatch) => {
     });
 };
 
-export const postNewGame = (roomId, navigate) => (dispatch) => {
+export const postNewGame = (roomId, navigate) => async (dispatch) => {
   dispatch({ type: POST_START_GAME_FETCH });
 
   const newGameResponse = postNewGameRequest(roomId);
@@ -81,7 +86,7 @@ export const postNewGame = (roomId, navigate) => (dispatch) => {
     });
 };
 
-export const getQuestion = (roomId, questionId) => (dispatch) => {
+export const getQuestion = (roomId, questionId) => async (dispatch) => {
   dispatch({ type: GET_QUESTION_FETCH });
 
   const questionResponse = getQuestionRequest(roomId, questionId);
@@ -102,7 +107,7 @@ export const getQuestion = (roomId, questionId) => (dispatch) => {
     });
 };
 
-export const answerQuestion = (roomId, questionId, answerId) => (dispatch) => {
+export const answerQuestion = (roomId, questionId, answerId) => async (dispatch) => {
   dispatch({ type: GAME_ANSWER_QUESTION_FETCH });
 
   const answerQuestionResponse = postAnswerQuestionRequest(
@@ -123,6 +128,23 @@ export const answerQuestion = (roomId, questionId, answerId) => (dispatch) => {
       dispatch({ type: GAME_ANSWER_QUESTION_ERROR });
       console.error(error);
     });
+};
+
+export const signIn = (email, password) => async (dispatch) => {
+  try {
+    dispatch({ type: SIGNIN_FETCH });
+
+    const signInResponse = await signInRequest(email, password);
+    checkStatus(signInResponse);
+
+    const data = await signInResponse.json();
+    localStorage.setItem('token', data.accessToken);
+
+    dispatch({ type: SIGNIN_SUCCESS });
+  } catch (error) {
+    dispatch({ type: SIGNIN_ERROR });
+    console.error(error);
+  }
 };
 
 export const setVisibleButton = (isVisibleButton) => ({

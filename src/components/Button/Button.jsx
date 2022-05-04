@@ -8,9 +8,10 @@ import './style.css';
 
 const Button = (props) => (
   <ButtonAntd
-    type="primary"
     shape="round"
-    className={props.className}
+    htmlType={props.htmlType}
+    type={props.type}
+    className={`button ${props.className}`}
     disabled={props.disabled}
     onClick={props.onClick}
   >
@@ -21,14 +22,19 @@ const Button = (props) => (
 Button.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   children: PropTypes.string,
+  type: PropTypes.string,
+  htmlType: PropTypes.string,
 };
 
 Button.defaultProps = {
   className: '',
   disabled: false,
   children: '',
+  htmlType: 'button',
+  type: 'primary',
+  onClick: () => { },
 };
 
 export default Button;
