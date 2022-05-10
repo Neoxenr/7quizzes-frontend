@@ -19,6 +19,10 @@ import {
   SIGNIN_FETCH,
   SIGNIN_ERROR,
   SIGNIN_SUCCESS,
+  SIGNUP_FETCH,
+  SIGNUP_SUCCESS,
+  SIGNUP_ERROR,
+  ERROR,
 } from './actionsTypes';
 
 import {
@@ -28,6 +32,7 @@ import {
   getQuestionRequest,
   postAnswerQuestionRequest,
   signInRequest,
+  signUpRequest,
 } from '../../fetcher/fetcher';
 import { checkStatus } from '../../utilities/utilities';
 
@@ -141,9 +146,45 @@ export const signIn = (email, password) => async (dispatch) => {
     localStorage.setItem('token', data.accessToken);
 
     dispatch({ type: SIGNIN_SUCCESS });
-  } catch (error) {
+  } catch (err) {
+    let error;
+
+    if (err.message === '400') {
+      error = 'Incorrect data';
+    } else if (err.message === '404') {
+      error = 'Invalid login or password';
+    } else if (err.message === '500') {
+      error = 'Server is unavailable';
+    }
+
+    dispatch({ type: ERROR, error });
+
     dispatch({ type: SIGNIN_ERROR });
-    console.error(error);
+    console.error(err);
+  }
+};
+
+export const signUp = (name, email, password) => async (dispatch) => {
+  try {
+    dispatch({ type: SIGNUP_FETCH });
+
+    const signUpResponse = await signUpRequest(name, email, password);
+    checkStatus(signUpResponse);
+
+    dispatch({ type: SIGNUP_SUCCESS });
+  } catch (err) {
+    let error;
+
+    if (err.message === '400') {
+      error = 'Incorrect data';
+    } else if (err.message === '500') {
+      error = 'Server is unavailable';
+    }
+
+    dispatch({ type: ERROR, error });
+
+    dispatch({ type: SIGNUP_ERROR });
+    console.error(err);
   }
 };
 

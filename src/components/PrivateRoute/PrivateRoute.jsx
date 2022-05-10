@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
-
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-
 import { useNavigate } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
@@ -9,11 +7,12 @@ import PropTypes from 'prop-types';
 const PrivateRoute = (props) => {
   const navigate = useNavigate();
 
-  const isAuthorized = useSelector(state => state.authReducer);
+  const isAuthorized = useSelector(state => state.loginReducer);
 
+  // eslint-disable-next-line consistent-return
   useEffect(() => {
     if (!isAuthorized) {
-      navigate('/signin');
+      return navigate('/signin');
     }
   }, [navigate, isAuthorized]);
 

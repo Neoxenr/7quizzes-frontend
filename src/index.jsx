@@ -9,23 +9,26 @@ import Game from './pages/Game/Game';
 import GameStart from './pages/GameStart/GameStart';
 import GameFinish from './pages/GameFinish/GameFinish';
 import GameLayout from './layouts/GameLayout/GameLayout';
-import Signin from './pages/Signin/Signin';
+import Signin from './pages/Authorization/Signin/Signin';
+import Signup from './pages/Authorization/Signup/Signup';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-
-import './index.css';
+import RedirectRoute from './components/RedirectRoute/RedirectRoute';
 
 import store from './store/store';
+
+import './index.css';
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<PrivateRoute><GameLayout /></PrivateRoute>}>
+        <Route path="/" element={<GameLayout />}>
           <Route index element={<PrivateRoute><GameStart /></PrivateRoute>} />
           <Route path="/game" element={<PrivateRoute><Game /></PrivateRoute>} />
           <Route path="/finish-game" element={<PrivateRoute><GameFinish /></PrivateRoute>} />
         </Route>
-        <Route path="/signin" element={<Signin />} />
+        <Route path="/signin" element={<RedirectRoute><Signin /></RedirectRoute>} />
+        <Route path="/signup" element={<RedirectRoute><Signup /></RedirectRoute>} />
       </Routes>
     </BrowserRouter>
   </Provider>,

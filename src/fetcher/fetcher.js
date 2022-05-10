@@ -47,3 +47,9 @@ export const signInRequest = async (email, password) => fetch('http://7quizzes.l
   headers: new Headers({ 'Content-Type': 'application/json' }),
   body: JSON.stringify({ email, password }),
 });
+
+export const signUpRequest = async (email, password) => fetch('http://7quizzes.local/api/signup', {
+  method: 'POST',
+  headers: new Headers({ 'Content-Type': 'application/json' }),
+  body: JSON.stringify({ email, password }),
+});

@@ -24,3 +24,10 @@ export const SET_VIBISILITY_MODAL = 'SET_VISIBILITY_MODAL';
 export const SIGNIN_FETCH = 'SIGNIN_FETCH';
 export const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS';
 export const SIGNIN_ERROR = 'SIGNIN_ERROR';
+
+export const SIGNUP_FETCH = 'SIGNUP_FETCH';
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
+export const SIGNUP_ERROR = 'SIGNUP_ERROR';
+
+export const ERROR = 'ERROR';
+export const ERROR_NONE = 'ERROR_NONE';
