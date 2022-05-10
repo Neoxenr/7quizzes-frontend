@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Button } from 'antd';
 import Icon from '@ant-design/icons';
 import { SIGNIN_FETCH } from '../../store/actions/actionsTypes';
