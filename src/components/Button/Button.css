@@ -1,0 +1,22 @@
+.button {
+  font-family: Roboto, sans-serif;
+  font-size: 15px;
+  border-radius: 5px;
+  border-color: transparent;
+  outline: none;
+  padding: 10px 40px;
+  color: #fff;
+  box-shadow: 0 2px 4px rgb(116 187 253 / 30%);
+  background-color: #74bbfd;
+}
+
+.button:disabled {
+  cursor: pointer;
+  background-color: #bdbdbd;
+}
+
+.button:active,
+.button:hover {
+  box-shadow: 0 2px 4px rgb(116 187 253 / 30%);
+  background-color: #49a7ff;
+}
