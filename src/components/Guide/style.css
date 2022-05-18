@@ -1,8 +1,9 @@
 .guide {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 125px auto 148px;
+  margin: 125px auto 0;
 }
 
 .guide__title {
@@ -14,4 +15,5 @@
 
 .guide__rules {
   font-size: 15px;
+  margin-bottom: 148px;
 }

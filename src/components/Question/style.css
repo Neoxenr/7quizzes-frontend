@@ -1,18 +1,17 @@
 .question {
-  display: flex;
-  align-items: center;
-  margin: 214px 0 127px 150px;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 2fr 1fr;
+  margin: 214px 150px 132px;
 }
 
 .question__body {
-  width: 68%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 80px;
+  grid-column: 1 / 3;
 }
 
 .question__title {
+  text-align: center;
   font-size: 28px;
   font-weight: 500;
   color: #000;
@@ -25,9 +24,23 @@
   color: #000;
 }
 
+.questions__answers {
+  place-self: center;
+}
+
 .question__answer {
-  font-size: 25px;
+  font-size: 28px;
   font-weight: 400;
   color: #000;
   margin-bottom: 25px;
+}
+
+.question__answer span.ant-radio + * {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.question__send-button {
+  grid-column: 2 / 3;
+  place-self: center;
 }
