@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { getRules } from '../../store/actions/actions';
 
 import Guide from '../../components/Guide/Guide';
 
 const GameStart = () => {
-  const [rules, setRules] = useState([]);
+  const dispatch = useDispatch();
+  const rules = useSelector((state) => state.rules);
 
   useEffect(() => {
-    fetch('/data.json').then(response => response.json()).then(data => setRules(data.rules));
-  }, []);
+    dispatch(getRules());
+  });
 
   return (
     <Guide rules={rules} />
