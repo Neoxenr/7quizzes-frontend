@@ -1,10 +1,7 @@
 .button {
-<<<<<<< HEAD:src/components/Button/style.css
   display: inline-block;
   width: 238px;
   margin: 0 auto;
-=======
->>>>>>> a5d5739828be0ffa56915a693c0164150abc3b69:src/components/Button/Button.css
   font-family: Roboto, sans-serif;
   font-size: 15px;
   border-radius: 5px;
