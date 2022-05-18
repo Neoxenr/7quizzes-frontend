@@ -1,16 +1,20 @@
 import React from 'react';
 
+import { Image, Space } from 'antd';
+
 import './style.css';
 
 import logo from './img/7Quizzes.png';
 
 const Header = () => (
   <header className="header">
-    <img className="header__logo" src={logo} alt="7Quizzes logo" />
-    <div className="header__info-block">
-      <a className="header__link" href="/">Game rules</a>
+    <Image src={logo} alt="7Quizzes logo" />
+    <Space>
+      <a className="header__link" href="/">
+        Game rules
+      </a>
       <span className="header__info-text">Points: 0</span>
-    </div>
+    </Space>
   </header>
 );
 

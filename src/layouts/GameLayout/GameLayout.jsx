@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Layout } from 'antd';
 import Header from '../../components/Header/Header';
 
 import './style.css';
@@ -8,9 +9,7 @@ import './style.css';
 const GameLayout = (props) => (
   <>
     <Header />
-    <main className="page">
-      {props.children}
-    </main>
+    <Layout.Content>{props.children}</Layout.Content>
   </>
 );
 

@@ -1,44 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Radio, Space } from 'antd';
+
 import './style.css';
 
-const Question = props => {
-  const answers = props.question.answers.map(answer => (
-    <>
-      <input className="answer-input" type="radio" name="answers" value={answer.id} id={answer.id} />
-      <label className="answer-label" key={answer.id} htmlFor={answer.id}>
-        {answer.text}
-      </label>
-    </>
+const Question = (props) => {
+  const answers = props.question.answers.map((answer) => (
+    <Radio className="answer" value={answer.id} key={answer.id} id={answer.id}>
+      {answer.text}
+    </Radio>
   ));
 
   return (
     <div className="question">
       <div className="question__body">
-        <header className="question__title">
-          {props.question.header}
-        </header>
-        <p className="question__text">
-          {props.question.text}
-        </p>
+        <header className="question__title">{props.question.header}</header>
+        <p className="question__text">{props.question.text}</p>
       </div>
-      <form className="answers">
-        {answers}
-      </form>
+      <Radio.Group>
+        <Space direction="vertical">{answers}</Space>
+      </Radio.Group>
     </div>
   );
 };
 
 Question.propTypes = {
   question: PropTypes.exact({
-    answers: PropTypes.arrayOf(PropTypes.exact({
-      id: PropTypes.string,
-      text: PropTypes.string,
-    })),
+    answers: PropTypes.arrayOf(
+      PropTypes.exact({
+        id: PropTypes.string,
+        text: PropTypes.string,
+      }),
+    ),
     header: PropTypes.string,
     text: PropTypes.string,
-  }).isRequired
+  }).isRequired,
 };
 
 export default Question;
