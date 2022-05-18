@@ -10,7 +10,7 @@ import { setVisibleModal } from '../../store/actions/actions';
 
 const Header = () => {
   const dispatch = useDispatch();
-  const isVisibleButton = useSelector((state) => state.isVisible.isVisibleButton);
+  const isVisibleButton = useSelector((state) => state.visibilityReducer.isVisibleButton);
 
   return (
     <header className="header">
