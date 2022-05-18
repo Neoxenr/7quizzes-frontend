@@ -1,0 +1,30 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  padding: 43px 150px 31px;
+  justify-content: space-between;
+  border-bottom: 2px #000 solid;
+}
+
+.header__logo {
+  width: 212px;
+  height: 55px;
+}
+
+.header__info-block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header__link {
+  text-decoration: none;
+  font-size: 28px;
+  color: #000;
+  margin-right: 98px;
+}
+
+.header__info-text {
+  font-size: 36px;
+  color: #000;
+}
