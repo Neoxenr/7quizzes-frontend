@@ -1,9 +1,0 @@
-.game {
-  display: flex;
-  flex-direction: column;
-  background-color: #efefef;
-  margin: 54px 285px 70px;
-  max-width: 1350px;
-  max-height: 820px;
-  height: 100%;
-}

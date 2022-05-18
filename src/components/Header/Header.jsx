@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { Image, Space } from 'antd';
+import { Space } from 'antd';
 
 import './style.css';
 
-import logo from './img/7Quizzes.png';
+import logo from './img/7Quizzes.svg';
 
 const Header = () => (
   <header className="header">
-    <Image src={logo} alt="7Quizzes logo" />
+    <img src={logo} alt="7Quizzes logo" />
     <Space>
       <a className="header__link" href="/">
         Game rules

@@ -1,7 +1,5 @@
 .button {
-  display: inline-block;
-  width: 200px;
+  width: 150px;
   margin: 0 auto 127px;
-  font-family: Roboto, sans-serif;
   font-size: 15px;
 }
