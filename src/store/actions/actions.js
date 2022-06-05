@@ -18,16 +18,20 @@ import {
   GAME_ANSWER_QUESTION_ERROR,
 } from './actionsTypes';
 
+import {
+  getRulesRequest,
+  getRoomsRequest,
+  postNewGameRequest,
+  getQuestionRequest,
+  postAnswerQuestionRequest,
+} from '../../fetcher/fetcher';
+
 export const getRules = () => (dispatch) => {
   dispatch({ type: GET_RULES_FETCH });
-  fetch('http://7quizzes.local/api/rules', {
-    headers: new Headers({
-      Authorization:
-        'Bearer '
-        + 'eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJqd3RAN2JpdHMuaXQiLCJpYXQiOjE2NTExNzQ1NTgsInN1YiI6ImRjZTVjNWVhLWM0N2EtMTFlYy05ZDY0LTAyNDJhYzEyMDAwMiIsImV4cCI6MTY1MTE3ODE1OCwicm9sZXMiOlsiVVNFUiJdLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20ifQ.v40s3FWvxeqyVlTwKbonZVu_yypmr_rCfDw-1zU8wfJ4PbdoYZKsw-s48t37Ttajn7VGM6z7e2l-YcX4IdDGaw',
-      'Content-Type': 'application/x-www-form-urlencoded',
-    }),
-  })
+
+  const rulesResponse = getRulesRequest();
+
+  rulesResponse
     .then((response) => response.json())
     .then((data) => {
       dispatch({
@@ -41,21 +45,17 @@ export const getRules = () => (dispatch) => {
     });
 };
 
-export const getRoom = () => async dispatch => {
+export const getRoom = () => async (dispatch) => {
   dispatch({ type: GET_ROOM_FETCH });
-  fetch('http://7quizzes.local/api/rooms', {
-    headers: new Headers({
-      Authorization:
-        'Bearer '
-        + 'eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJqd3RAN2JpdHMuaXQiLCJpYXQiOjE2NTExNzQ1NTgsInN1YiI6ImRjZTVjNWVhLWM0N2EtMTFlYy05ZDY0LTAyNDJhYzEyMDAwMiIsImV4cCI6MTY1MTE3ODE1OCwicm9sZXMiOlsiVVNFUiJdLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20ifQ.v40s3FWvxeqyVlTwKbonZVu_yypmr_rCfDw-1zU8wfJ4PbdoYZKsw-s48t37Ttajn7VGM6z7e2l-YcX4IdDGaw',
-      'Content-Type': 'application/x-www-form-urlencoded',
-    }),
-  })
+
+  const roomsResponse = getRoomsRequest();
+
+  roomsResponse
     .then((response) => response.json())
     .then((data) => {
       dispatch({
         type: GET_ROOM_SUCCESS,
-        roomId: data[data.length - 1]?.roomId,
+        roomId: data[0]?.roomId,
       });
     })
     .catch((error) => {
@@ -66,15 +66,10 @@ export const getRoom = () => async dispatch => {
 
 export const postNewGame = (roomId, navigate) => (dispatch) => {
   dispatch({ type: POST_START_GAME_FETCH });
-  fetch(`http://7quizzes.local/api/rooms/${roomId}/game/start`, {
-    method: 'POST',
-    headers: new Headers({
-      Authorization:
-        'Bearer '
-        + 'eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJqd3RAN2JpdHMuaXQiLCJpYXQiOjE2NTExNzQ1NTgsInN1YiI6ImRjZTVjNWVhLWM0N2EtMTFlYy05ZDY0LTAyNDJhYzEyMDAwMiIsImV4cCI6MTY1MTE3ODE1OCwicm9sZXMiOlsiVVNFUiJdLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20ifQ.v40s3FWvxeqyVlTwKbonZVu_yypmr_rCfDw-1zU8wfJ4PbdoYZKsw-s48t37Ttajn7VGM6z7e2l-YcX4IdDGaw',
-      'Content-Type': 'application/x-www-form-urlencoded',
-    }),
-  })
+
+  const newGameResponse = postNewGameRequest(roomId);
+
+  newGameResponse
     .then((response) => response.json())
     .then((data) => {
       dispatch({ type: POST_START_GAME_SUCCESS, questionId: data.questionId });
@@ -88,17 +83,10 @@ export const postNewGame = (roomId, navigate) => (dispatch) => {
 
 export const getQuestion = (roomId, questionId) => (dispatch) => {
   dispatch({ type: GET_QUESTION_FETCH });
-  fetch(
-    `http://7quizzes.local/api/rooms/${roomId}/game/question/${questionId}`,
-    {
-      headers: new Headers({
-        Authorization:
-          'Bearer '
-          + 'eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJqd3RAN2JpdHMuaXQiLCJpYXQiOjE2NTExNzQ1NTgsInN1YiI6ImRjZTVjNWVhLWM0N2EtMTFlYy05ZDY0LTAyNDJhYzEyMDAwMiIsImV4cCI6MTY1MTE3ODE1OCwicm9sZXMiOlsiVVNFUiJdLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20ifQ.v40s3FWvxeqyVlTwKbonZVu_yypmr_rCfDw-1zU8wfJ4PbdoYZKsw-s48t37Ttajn7VGM6z7e2l-YcX4IdDGaw',
-        'Content-Type': 'application/x-www-form-urlencoded',
-      }),
-    },
-  )
+
+  const questionResponse = getQuestionRequest(roomId, questionId);
+
+  questionResponse
     .then((response) => response.json())
     .then((data) => {
       dispatch({
@@ -116,19 +104,14 @@ export const getQuestion = (roomId, questionId) => (dispatch) => {
 
 export const answerQuestion = (roomId, questionId, answerId) => (dispatch) => {
   dispatch({ type: GAME_ANSWER_QUESTION_FETCH });
-  fetch(
-    `http://7quizzes.local/api/rooms/${roomId}/game/question/${questionId}/answer`,
-    {
-      method: 'POST',
-      headers: new Headers({
-        Authorization:
-          'Bearer '
-          + 'eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJqd3RAN2JpdHMuaXQiLCJpYXQiOjE2NTExNzQ1NTgsInN1YiI6ImRjZTVjNWVhLWM0N2EtMTFlYy05ZDY0LTAyNDJhYzEyMDAwMiIsImV4cCI6MTY1MTE3ODE1OCwicm9sZXMiOlsiVVNFUiJdLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20ifQ.v40s3FWvxeqyVlTwKbonZVu_yypmr_rCfDw-1zU8wfJ4PbdoYZKsw-s48t37Ttajn7VGM6z7e2l-YcX4IdDGaw',
-        'Content-Type': 'application/json',
-      }),
-      body: JSON.stringify({ answerId }),
-    },
-  )
+
+  const answerQuestionResponse = postAnswerQuestionRequest(
+    roomId,
+    questionId,
+    answerId,
+  );
+
+  answerQuestionResponse
     .then((response) => response.json())
     .then((data) => {
       dispatch({
