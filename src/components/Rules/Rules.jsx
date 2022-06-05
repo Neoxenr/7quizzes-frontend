@@ -10,13 +10,16 @@ const Rules = (props) => (
     className="rules"
     dataSource={props.rules}
     renderItem={(item, index) => (
-      <List.Item>{`${index + 1}. ${item}`}</List.Item>
+      <List.Item>{`${index + 1}. ${item.ruleText}`}</List.Item>
     )}
   />
 );
 
 Rules.propTypes = {
-  rules: PropTypes.arrayOf(PropTypes.string).isRequired,
+  rules: PropTypes.arrayOf(PropTypes.exact({
+    ruleId: PropTypes.string,
+    ruleText: PropTypes.string
+  })).isRequired,
 };
 
 export default Rules;

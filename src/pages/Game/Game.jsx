@@ -6,14 +6,23 @@ import { Modal } from 'antd';
 import Question from '../../components/Question/Question';
 import Rules from '../../components/Rules/Rules';
 
-import { setVisibleButton, setVisibleModal } from '../../store/actions/actions';
+import {
+  getQuestion,
+  setVisibleButton, setVisibleModal
+} from '../../store/actions/actions';
 
 const Game = () => {
   const dispatch = useDispatch();
 
   const rules = useSelector((state) => state.rulesReducer);
-  const question = useSelector((state) => state.questionReducer.question, shallowEqual);
-  const isVisibleModal = useSelector((state) => state.visibilityReducer.isVisibleModal);
+
+  const isVisibleModal = useSelector((state) => state.visibilityReducer
+    .isVisibleModal, shallowEqual);
+
+  const roomId = useSelector((state) => state.roomReducer, shallowEqual);
+  const questionId = useSelector((state) => state.gameReducer, shallowEqual);
+
+  const question = useSelector((state) => state.questionReducer.question);
 
   const handleOk = () => {
     dispatch(setVisibleModal(false));
@@ -24,15 +33,22 @@ const Game = () => {
   };
 
   useEffect(() => {
+    dispatch(getQuestion(roomId, questionId));
     dispatch(setVisibleButton(true));
     return () => {
       dispatch(setVisibleButton(false));
     };
-  }, [dispatch]);
+  }, []);
 
   return (
     <>
-      <Modal centered width={1200} visible={isVisibleModal} onOk={handleOk} onCancel={handleCancel}>
+      <Modal
+        centered
+        width={1200}
+        visible={isVisibleModal}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
         <Rules rules={rules} />
       </Modal>
       <Question question={question} />
