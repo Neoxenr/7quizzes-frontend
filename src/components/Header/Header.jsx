@@ -5,8 +5,9 @@ import { Space, Button } from 'antd';
 import './style.css';
 
 import { useDispatch, useSelector } from 'react-redux';
-import logo from './img/7Quizzes.svg';
 import { setVisibleModal } from '../../store/actions/actions';
+
+import Logo from '../Logo/Logo';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const Header = () => {
 
   return (
     <header className="header">
-      <img src={logo} alt="7Quizzes logo" />
+      <Logo />
       <Space>
         {isVisibleButton && (
           <Button type="link" className="header__button" onClick={() => dispatch(setVisibleModal(true))}>

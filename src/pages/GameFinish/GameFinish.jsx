@@ -9,7 +9,7 @@ const GameFinish = () => {
   return (
     <>
       <Result />
-      <Button className="button" onClick={() => navigate('/', { replace: true })}>Play again</Button>
+      <Button onClick={() => navigate('/', { replace: true })}>Play again</Button>
     </>
   );
 };

@@ -6,6 +6,7 @@ import visibilityReducer from './visibilityReducer';
 import roomReducer from './roomReducer';
 import gameReducer from './gameReducer';
 import answerReducer from './answerReducer';
+import authReducer from './authReducer';
 
 const rootReducer = combineReducers({
   rulesReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   gameReducer,
   questionReducer,
   answerReducer,
+  authReducer,
 });
 
 export default rootReducer;
