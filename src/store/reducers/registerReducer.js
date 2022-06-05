@@ -1,14 +1,14 @@
 import {
   SIGNIN_ERROR,
-  SIGNIN_FETCH,
-  SIGNIN_SUCCESS,
+  SIGNUP_FETCH,
+  SIGNUP_SUCCESS,
 } from '../actions/actionsTypes';
 
-const authReducer = (state = false, action) => {
+const registerReducer = (state = false, action) => {
   switch (action.type) {
-    case SIGNIN_FETCH:
+    case SIGNUP_FETCH:
       return false;
-    case SIGNIN_SUCCESS:
+    case SIGNUP_SUCCESS:
       return true;
     case SIGNIN_ERROR:
       return false;
@@ -17,4 +17,4 @@ const authReducer = (state = false, action) => {
   }
 };
 
-export default authReducer;
+export default registerReducer;

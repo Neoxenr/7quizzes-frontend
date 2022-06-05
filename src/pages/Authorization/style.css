@@ -1,4 +1,4 @@
-.signin {
+.form-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,7 +8,7 @@
   background-color: #efefef;
 }
 
-.signin__credential {
+.form-page__credential {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,25 +19,35 @@
   background: #fff;
 }
 
-.signin__logo {
-  margin: 105px 41.2% 30px;
-}
-
-.signin__form {
-  width: 70%;
-  margin: 0 auto;
-}
-
-.signin__button {
-  margin: 64px 41% 70px;
-}
-
-.signin__info {
+.form-page__info {
   text-align: center;
   font-family: Roboto, sans-serif;
   font-weight: 400;
   font-size: 32px;
   line-height: 38px;
+}
+
+.form-page__error {
+  color: #f00;
+  font-size: 30px;
+}
+
+.form-page__logo {
+  margin: 105px 41.2% 30px;
+}
+
+.form-page__link {
+  font-weight: 700;
+  color: #000;
+}
+
+.form {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.form__button {
+  margin: 64px 41% 70px;
 }
 
 .ant-form-item-label > label {
@@ -61,4 +71,9 @@
   border: 2px solid #000;
   box-sizing: border-box;
   border-radius: 15px;
+}
+
+.ant-form-item-control-input-content > .ant-input:focus,
+.ant-form-item-control-input-content > .ant-input-affix-wrapper:focus {
+  border-color: #000;
 }

@@ -38,7 +38,7 @@ const Game = () => {
     return () => {
       dispatch(setVisibleButton(false));
     };
-  }, []);
+  }, [dispatch, questionId, roomId]);
 
   return (
     <>

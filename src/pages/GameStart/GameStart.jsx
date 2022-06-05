@@ -16,14 +16,16 @@ const GameStart = () => {
   const navigate = useNavigate();
 
   const rules = useSelector((state) => state.rulesReducer);
-
   const roomId = useSelector((state) => state.roomReducer);
+
+  const isAuthorized = useSelector(state => state.loginReducer);
 
   const [isDisabled, setDisabled] = useState(false);
 
   const handleClick = () => {
     if (roomId === null) {
       setDisabled(true);
+      // eslint-disable-next-line no-alert
       alert('Комнат не найдено');
     } else {
       setDisabled(false);
@@ -32,9 +34,11 @@ const GameStart = () => {
   };
 
   useEffect(() => {
-    dispatch(getRoom());
-    dispatch(getRules());
-  }, []);
+    if (isAuthorized) {
+      dispatch(getRoom());
+      dispatch(getRules());
+    }
+  }, [dispatch, isAuthorized]);
 
   return (
     <div className="guide">
