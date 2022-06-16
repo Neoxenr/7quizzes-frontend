@@ -42,7 +42,7 @@
     "eject": "react-scripts eject",
     "stylelint": "stylelint ./src/**/*.css",
     "stylelint:fix": "npm run stylelint -- --fix",
-    "lint": "eslint ./src/**/*.{js,jsx}",
+    "lint": "eslint ./src/**/*.{js,ts,jsx,tsx}",
     "lint:fix": "npm run lint -- --fix"
   },
   "eslintConfig": {
