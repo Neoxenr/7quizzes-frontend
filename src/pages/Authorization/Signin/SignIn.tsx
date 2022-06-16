@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Form, Input } from 'antd';
 
-import { useDispatch,  } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 
 import Button from '../../../components/Button/Button';
@@ -16,7 +16,7 @@ import {
 } from '../../../common/dto/auth/types';
 import { authorize } from '../../../store/slices';
 
-const SignIn = () => {
+function SignIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -25,11 +25,10 @@ const SignIn = () => {
   const [authorizeUser, { isLoading: isLogging }] = useSignInMutation();
 
   // eslint-disable-next-line no-multi-str
-  const query =
-    '.ant-form-item-control-input-content > .ant-input, \
+  const query = '.ant-form-item-control-input-content > .ant-input, \
                     .ant-form-item-control-input-content > .ant-input-affix-wrapper';
   const elements = document.querySelectorAll(query);
-  
+
   const handleFinish = (userCredential: SignInRequestDto): void => {
     if (!isLogging) {
       authorizeUser(userCredential)
@@ -74,26 +73,29 @@ const SignIn = () => {
           layout="vertical"
           // onChange={error ? handleChange : () => {}}
           onChange={handleChange}
-          onFinish={handleFinish}>
+          onFinish={handleFinish}
+        >
           <Form.Item className="form__text-input" name="email" label="Email">
             <Input />
           </Form.Item>
           <Form.Item
             className="form__text-input"
             name="password"
-            label="Password">
+            label="Password"
+          >
             <Input.Password />
           </Form.Item>
           <Form.Item shouldUpdate>
             {({ getFieldValue }) => {
-              {/* @ts-ignore */}
+              { /* @ts-ignore */ }
               const { email, password } = getFieldValue();
               const formIsFilled = !!email && !!password;
               return (
                 <Button
                   htmlType="submit"
                   disabled={!formIsFilled}
-                  className="form__button">
+                  className="form__button"
+                >
                   Sign in
                 </Button>
               );
@@ -111,6 +113,6 @@ const SignIn = () => {
       </div>
     </div>
   );
-};
+}
 
 export default SignIn;

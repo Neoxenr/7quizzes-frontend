@@ -30,22 +30,21 @@ const GameStart: FC = (): ReactElement => {
       setDisabled(true);
       // eslint-disable-next-line no-alert
       alert('Комнат не найдено');
-    } else {
-      if (!isStarting) {
-        startGame(roomId)
-          .unwrap()
-          .then((payload: PostGameDto) => {
-            dispatch(setCurrentQuestionId(payload.questionId));
-          })
-          .then(() => {
-            setDisabled(false);
-            dispatch(setVisibleButton(true));
-            navigate('/game');
-          }).catch((err: any) => {
-            console.log(roomId);
-            console.error(err);
-          });
-      }
+    } else if (!isStarting) {
+      startGame(roomId)
+        .unwrap()
+        .then((payload: PostGameDto) => {
+          dispatch(setCurrentQuestionId(payload.questionId));
+        })
+        .then(() => {
+          setDisabled(false);
+          dispatch(setVisibleButton(true));
+          navigate('/game');
+        })
+        .catch((err: any) => {
+          console.log(roomId);
+          console.error(err);
+        });
     }
   };
 

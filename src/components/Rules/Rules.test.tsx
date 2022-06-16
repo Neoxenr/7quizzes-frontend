@@ -4,13 +4,11 @@ import { render, screen } from '@testing-library/react';
 import Rules from './Rules';
 
 Object.defineProperty(window, 'matchMedia', {
-  value: () => {
-    return {
-      matches: false,
-      addListener: () => {},
-      removeListener: () => {},
-    };
-  },
+  value: () => ({
+    matches: false,
+    addListener: () => {},
+    removeListener: () => {},
+  }),
 });
 
 describe('Tests for Rules component', () => {

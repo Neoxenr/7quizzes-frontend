@@ -1,8 +1,7 @@
 import React, { FC, ReactElement, useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
-
 import { Modal } from 'antd';
+import { RootState } from '../../store/store';
 
 import {
   useGetQuestionQuery,
@@ -41,10 +40,8 @@ const Game: FC = (): ReactElement => {
     dispatch(setVisibleModal(false));
   };
 
-  useEffect(() => {
-    return () => {
-      dispatch(setVisibleButton(false));
-    };
+  useEffect(() => () => {
+    dispatch(setVisibleButton(false));
   }, [dispatch, roomId]);
 
   if (isLoading) {
@@ -59,7 +56,8 @@ const Game: FC = (): ReactElement => {
         width={1200}
         visible={isVisibleModal}
         onOk={handleOk}
-        onCancel={handleCancel}>
+        onCancel={handleCancel}
+      >
         <Rules rules={getRulesDto?.rules} />
       </Modal>
       <Question question={question} />

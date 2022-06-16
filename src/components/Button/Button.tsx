@@ -27,7 +27,8 @@ const Button: FC<Props> = (props: Props): ReactElement => (
     type={props.type}
     className={`button ${props.className}`}
     disabled={props.disabled}
-    onClick={props.onClick}>
+    onClick={props.onClick}
+  >
     {props.children}
   </ButtonAntd>
 );

@@ -13,7 +13,7 @@ import '../style.css';
 import { useSignUpMutation } from '../../../api';
 import { SignInRequestDto, SignUpRequestDto } from '../../../common/dto/auth/types';
 
-const SignUp = () => {
+function SignUp() {
   const navigate = useNavigate();
 
   const [registerUser, { isLoading: isLogging }] = useSignUpMutation();
@@ -21,8 +21,7 @@ const SignUp = () => {
   // const error = useSelector((state: RootState) => state.errorReducer);
 
   // eslint-disable-next-line no-multi-str
-  const query =
-    '.ant-form-item-control-input-content > .ant-input, \
+  const query = '.ant-form-item-control-input-content > .ant-input, \
                     .ant-form-item-control-input-content > .ant-input-affix-wrapper';
   const elements = document.querySelectorAll(query);
 
@@ -74,26 +73,29 @@ const SignUp = () => {
           layout="vertical"
           // onChange={error ? handleChange : () => {}}
           onChange={handleChange}
-          onFinish={handleFinish}>
+          onFinish={handleFinish}
+        >
           <Form.Item className="form__text-input" name="email" label="Email">
             <Input />
           </Form.Item>
           <Form.Item
             className="form__text-input"
             name="password"
-            label="Password">
+            label="Password"
+          >
             <Input.Password />
           </Form.Item>
           <Form.Item shouldUpdate>
             {({ getFieldValue }) => {
-              {/* @ts-ignore */}
+              { /* @ts-ignore */ }
               const { email, password } = getFieldValue();
               const formIsFilled = !!email && !!password;
               return (
                 <Button
                   htmlType="submit"
                   disabled={!formIsFilled}
-                  className="form__button">
+                  className="form__button"
+                >
                   Sign up
                 </Button>
               );
@@ -111,6 +113,6 @@ const SignUp = () => {
       </div>
     </div>
   );
-};
+}
 
 export default SignUp;

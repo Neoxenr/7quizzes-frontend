@@ -1,6 +1,8 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import {
+  act, fireEvent, render, screen,
+} from '@testing-library/react';
 
 import Button from './Button';
 
@@ -12,7 +14,8 @@ describe('Tests for button component', () => {
         className=""
         disabled
         type="primary"
-        htmlType="button">
+        htmlType="button"
+      >
         test button
       </Button>,
     );
@@ -29,7 +32,8 @@ describe('Tests for button component', () => {
         onClick={mockOnClick}
         disabled={false}
         htmlType="button"
-        type="primary">
+        type="primary"
+      >
         test button
       </Button>,
     );
@@ -49,7 +53,8 @@ describe('Tests for button component', () => {
         onClick={() => {}}
         disabled={false}
         htmlType="button"
-        type="primary">
+        type="primary"
+      >
         test button
       </Button>,
     );
@@ -67,7 +72,8 @@ describe('Tests for button component', () => {
         onClick={mockOnClick}
         disabled
         htmlType="button"
-        type="primary">
+        type="primary"
+      >
         test button
       </Button>,
     );

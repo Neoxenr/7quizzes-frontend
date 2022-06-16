@@ -47,8 +47,7 @@ const Question: FC<Props> = (props: Props): ReactElement => {
   const { data: rooms } = useGetRoomsQuery();
   const roomId = rooms?.[rooms.length - 1].roomId;
 
-  const [answerQuestion, { isLoading: isAnswering }] =
-    useAnswerQuestionMutation();
+  const [answerQuestion, { isLoading: isAnswering }] = useAnswerQuestionMutation();
 
   const questionsCount = 3;
 
@@ -62,7 +61,8 @@ const Question: FC<Props> = (props: Props): ReactElement => {
           : ''
       }`}
       value={answer.answerId}
-      key={answer.answerId}>
+      key={answer.answerId}
+    >
       {answer.answerText}
     </Radio>
   ));
@@ -110,7 +110,8 @@ const Question: FC<Props> = (props: Props): ReactElement => {
       </Form.Item>
       <Form.Item className="questions__answers" name="answer">
         <Radio.Group
-          onChange={(event) => !isAnswered && selectAnswer(event.target.value)}>
+          onChange={(event) => !isAnswered && selectAnswer(event.target.value)}
+        >
           <Space direction="vertical">{answers}</Space>
         </Radio.Group>
       </Form.Item>

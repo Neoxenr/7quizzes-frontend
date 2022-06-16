@@ -1,9 +1,9 @@
 import React, { FC, ReactElement } from 'react';
 
-import { RootState } from '../../store/store';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Space, Button } from 'antd';
+import { RootState } from '../../store/store';
 
 import './style.css';
 
@@ -26,7 +26,8 @@ const Header: FC = (): ReactElement => {
           <Button
             type="link"
             className="header__button"
-            onClick={() => dispatch(setVisibleModal(true))}>
+            onClick={() => dispatch(setVisibleModal(true))}
+          >
             Game rules
           </Button>
         )}

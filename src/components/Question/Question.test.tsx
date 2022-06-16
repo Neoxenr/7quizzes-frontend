@@ -10,13 +10,11 @@ jest.mock('react-router-dom', () => ({
 }));
 
 Object.defineProperty(window, 'matchMedia', {
-  value: () => {
-    return {
-      matches: false,
-      addListener: () => {},
-      removeListener: () => {},
-    };
-  },
+  value: () => ({
+    matches: false,
+    addListener: () => {},
+    removeListener: () => {},
+  }),
 });
 
 describe('Tests for Question component', () => {
