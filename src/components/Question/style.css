@@ -37,11 +37,11 @@
 }
 
 .question__answer_correct {
-  color: #04C100;
+  color: #04c100;
 }
 
 .question__answer_incorrect {
-  color: #AF0000;
+  color: #af0000;
 }
 
 .question__answer span.ant-radio + * {
