@@ -1,4 +1,4 @@
-import { FC, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
 export function PublicRoute(): ReactElement {

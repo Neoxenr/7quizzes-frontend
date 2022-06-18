@@ -50,7 +50,6 @@ const Game: FC = (): ReactElement => {
 
   return (
     <>
-      {/* @ts-ignore */}
       <Modal
         centered
         width={1200}

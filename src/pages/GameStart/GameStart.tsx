@@ -1,16 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { FC, ReactElement, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import Rules from '../../components/Rules/Rules';
 import Button from '../../components/Button/Button';
 
 import { useGetRoomsQuery, useGetRulesQuery } from '../../api';
-import { usePostGameMutation, usePrefetch } from '../../api/game/game';
+import { usePostGameMutation } from '../../api/game/game';
+import { setCurrentQuestionId, setVisibleButton } from '../../store/slices';
+import { PostGameDto } from '../../common';
 
 import './style.css';
-import { setCurrentQuestionId, setVisibleButton } from '../../store/slices';
-import { useDispatch } from 'react-redux';
-import { PostGameDto } from '../../common';
 
 const GameStart: FC = (): ReactElement => {
   const dispatch = useDispatch();
@@ -42,7 +43,6 @@ const GameStart: FC = (): ReactElement => {
           navigate('/game');
         })
         .catch((err: any) => {
-          console.log(roomId);
           console.error(err);
         });
     }

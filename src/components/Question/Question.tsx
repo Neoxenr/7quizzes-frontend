@@ -54,6 +54,7 @@ const Question: FC<Props> = (props: Props): ReactElement => {
   const answers = props?.question?.answersList.map((answer) => (
     <Radio
       className={`question__answer ${
+        // eslint-disable-next-line no-nested-ternary
         isAnswered
           ? answer.answerId === correctAnswerId
             ? 'question__answer_correct'

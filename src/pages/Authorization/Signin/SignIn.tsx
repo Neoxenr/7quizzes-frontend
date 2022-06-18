@@ -1,14 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 
 import { Form, Input } from 'antd';
 
 import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
-
-import Button from '../../../components/Button/Button';
-import Logo from '../../../components/Logo/Logo';
-
-import '../style.css';
 import { useSignInMutation } from '../../../api';
 import {
   SignInRequestDto,
@@ -16,11 +12,14 @@ import {
 } from '../../../common/dto/auth/types';
 import { authorize } from '../../../store/slices';
 
+import Button from '../../../components/Button/Button';
+import Logo from '../../../components/Logo/Logo';
+
+import '../style.css';
+
 function SignIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // const error = useSelector((state: RootState) => state.errorReducer);
 
   const [authorizeUser, { isLoading: isLogging }] = useSignInMutation();
 
@@ -40,7 +39,7 @@ function SignIn() {
 
           navigate('/');
         })
-        .catch((err: any) => {
+        .catch(() => {
           elements.forEach((element: any) => {
             element.style.borderColor = '#f00';
           });
@@ -52,17 +51,7 @@ function SignIn() {
     elements.forEach((element: any) => {
       element.style.borderColor = '#000';
     });
-    // dispatch({ type: ERROR_NONE });
   };
-
-  // // eslint-disable-next-line consistent-return
-  // useEffect(() => {
-  //   if (error) {
-  //     elements.forEach((element: any) => {
-  //       element.style.borderColor = '#f00';
-  //     });
-  //   }
-  // }, [isAuthorized, navigate, error, elements]);
 
   return (
     <div className="form-page">
@@ -71,7 +60,6 @@ function SignIn() {
         <Form
           className="form-page__form form"
           layout="vertical"
-          // onChange={error ? handleChange : () => {}}
           onChange={handleChange}
           onFinish={handleFinish}
         >
@@ -86,9 +74,8 @@ function SignIn() {
             <Input.Password />
           </Form.Item>
           <Form.Item shouldUpdate>
-            {({ getFieldValue }) => {
-              { /* @ts-ignore */ }
-              const { email, password } = getFieldValue();
+            {({ getFieldsValue }) => {
+              const { email, password } = getFieldsValue();
               const formIsFilled = !!email && !!password;
               return (
                 <Button
@@ -102,7 +89,6 @@ function SignIn() {
             }}
           </Form.Item>
         </Form>
-        {/* {error !== '' && <p className="form-page__error">{error}</p>} */}
         <p className="form-page__info">
           Don’t have an account yet?
           <br />

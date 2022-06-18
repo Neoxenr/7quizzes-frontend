@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import { api } from '../api';
@@ -5,7 +6,8 @@ import gameSlice from './slices/gameSlice';
 import loginSlice from './slices/loginSlice';
 import visibleSlice from './slices/visibleSlice';
 
-const checkTokenExpirationMiddleware = (store: any) => (next: any) => (action: any) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const checkTokenExpirationMiddleware = () => (next: any) => (action: any) => {
   const token = localStorage.getItem('token');
   if (token) {
     const parsedToken = JSON.parse(window.atob(token.split('.')[1]));

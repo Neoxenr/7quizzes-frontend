@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import Rules from './Rules';
 
 Object.defineProperty(window, 'matchMedia', {

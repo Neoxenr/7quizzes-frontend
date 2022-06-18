@@ -20,6 +20,16 @@ type Props = {
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
 };
 
+const defaultProps: Props = {
+  className: '',
+  disabled: false,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onClick: () => {},
+  children: '',
+  type: 'primary',
+  htmlType: 'button',
+};
+
 const Button: FC<Props> = (props: Props): ReactElement => (
   <ButtonAntd
     shape="round"
@@ -32,5 +42,7 @@ const Button: FC<Props> = (props: Props): ReactElement => (
     {props.children}
   </ButtonAntd>
 );
+
+Button.defaultProps = defaultProps;
 
 export default Button;

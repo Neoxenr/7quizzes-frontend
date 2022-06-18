@@ -1,6 +1,6 @@
 import { Provider } from 'react-redux';
 import { render, RenderResult } from '@testing-library/react';
-import { ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { configureStore } from '@reduxjs/toolkit';
 import { api } from '../api';
 import gameSlice from '../store/slices/gameSlice';
@@ -9,6 +9,7 @@ import loginSlice from '../store/slices/loginSlice';
 
 export const renderWithProviders = (
   component: ReactElement,
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): { store: any; render: RenderResult } => {
   const store = configureStore({
     reducer: {

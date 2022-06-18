@@ -1,24 +1,22 @@
-import React, { useEffect } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React from 'react';
 
 import { Form, Input } from 'antd';
 
-import { useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
-import { RootState } from '../../../store/store';
 
 import Button from '../../../components/Button/Button';
 import Logo from '../../../components/Logo/Logo';
 
-import '../style.css';
 import { useSignUpMutation } from '../../../api';
-import { SignInRequestDto, SignUpRequestDto } from '../../../common/dto/auth/types';
+import { SignUpRequestDto } from '../../../common/dto/auth/types';
+
+import '../style.css';
 
 function SignUp() {
   const navigate = useNavigate();
 
   const [registerUser, { isLoading: isLogging }] = useSignUpMutation();
-
-  // const error = useSelector((state: RootState) => state.errorReducer);
 
   // eslint-disable-next-line no-multi-str
   const query = '.ant-form-item-control-input-content > .ant-input, \
@@ -29,7 +27,6 @@ function SignUp() {
     elements.forEach((element: any) => {
       element.style.borderColor = '#000';
     });
-    // dispatch({ type: ERROR_NONE });
   };
 
   const handleFinish = (userCredential: SignUpRequestDto): void => {
@@ -41,28 +38,13 @@ function SignUp() {
             navigate('/signin');
           }
         })
-        .catch((err: any) => {
+        .catch(() => {
           elements.forEach((element: any) => {
             element.style.borderColor = '#f00';
           });
         });
     }
   };
-
-  // // eslint-disable-next-line consistent-return
-  // useEffect(() => {
-  //   if (isAuthorized) {
-  //     return navigate('/');
-  //   }
-  //   // if (isRegistred) {
-  //   //   return navigate('/signin');
-  //   // }
-  //   // if (error) {
-  //   //   elements.forEach((element: any) => {
-  //   //     element.style.borderColor = '#f00';
-  //   //   });
-  //   // }
-  // }, [isAuthorized, navigate, elements]);
 
   return (
     <div className="form-page">
@@ -71,7 +53,6 @@ function SignUp() {
         <Form
           className="form-page_form form"
           layout="vertical"
-          // onChange={error ? handleChange : () => {}}
           onChange={handleChange}
           onFinish={handleFinish}
         >
@@ -86,9 +67,8 @@ function SignUp() {
             <Input.Password />
           </Form.Item>
           <Form.Item shouldUpdate>
-            {({ getFieldValue }) => {
-              { /* @ts-ignore */ }
-              const { email, password } = getFieldValue();
+            {({ getFieldsValue }) => {
+              const { email, password } = getFieldsValue();
               const formIsFilled = !!email && !!password;
               return (
                 <Button
