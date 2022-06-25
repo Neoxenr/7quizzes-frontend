@@ -1,7 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
+import {
+  loadTranslations,
+  setLocale,
+  syncTranslationWithStore,
+  i18nReducer,
+} from 'react-redux-i18n';
 import { api } from '../api';
+import localization from '../localization';
 import gameSlice from './slices/gameSlice';
 import loginSlice from './slices/loginSlice';
 import visibleSlice from './slices/visibleSlice';
@@ -26,6 +33,7 @@ const store = configureStore({
     game: gameSlice,
     visible: visibleSlice,
     login: loginSlice,
+    i18n: i18nReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware()
     .concat(api.middleware)
@@ -33,6 +41,10 @@ const store = configureStore({
 });
 
 setupListeners(store.dispatch);
+
+syncTranslationWithStore(store);
+store.dispatch(loadTranslations(localization));
+store.dispatch(setLocale('en'));
 
 export type RootState = ReturnType<typeof store.getState>;
 

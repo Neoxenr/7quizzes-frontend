@@ -2,6 +2,7 @@ import React, { FC, ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Radio, Space, Form } from 'antd';
+import { I18n } from 'react-redux-i18n';
 import { useAnswerQuestionMutation, useGetRoomsQuery } from '../../api';
 import {
   AnswerQuestionBadResponseDto,
@@ -106,7 +107,7 @@ const Question: FC<Props> = (props: Props): ReactElement => {
   return (
     <Form className="question">
       <Form.Item className="question__body">
-        <header className="question__title">{`Question # ${counter}`}</header>
+        <header className="question__title">{`${I18n.t('page.game.question.questionTitle')} # ${counter}`}</header>
         <p className="question__text">{props.question?.questionText}</p>
       </Form.Item>
       <Form.Item className="questions__answers" name="answer">
@@ -119,11 +120,11 @@ const Question: FC<Props> = (props: Props): ReactElement => {
       <Form.Item className="question__send-button">
         {!isAnswered ? (
           <Button disabled={!selectedAnswer} onClick={handleAnswerClick}>
-            Answer
+            {I18n.t('page.game.question.questionAnswer')}
           </Button>
         ) : (
           <Button disabled={!selectedAnswer} onClick={handleNextClick}>
-            Next
+            {I18n.t('page.game.question.questionNext')}
           </Button>
         )}
       </Form.Item>

@@ -2,14 +2,13 @@
 import React from 'react';
 
 import { Form, Input } from 'antd';
-
 import { useNavigate, Link } from 'react-router-dom';
+import { I18n } from 'react-redux-i18n';
+import { useSignUpMutation } from '../../../api';
+import { SignUpRequestDto } from '../../../common/dto/auth/types';
 
 import Button from '../../../components/Button/Button';
 import Logo from '../../../components/Logo/Logo';
-
-import { useSignUpMutation } from '../../../api';
-import { SignUpRequestDto } from '../../../common/dto/auth/types';
 
 import '../style.css';
 
@@ -76,7 +75,7 @@ function SignUp() {
                   disabled={!formIsFilled}
                   className="form__button"
                 >
-                  Sign up
+                  {I18n.t('page.sign-up.buttonConfirm')}
                 </Button>
               );
             }}
@@ -84,10 +83,10 @@ function SignUp() {
         </Form>
         {/* {error !== '' && <p className="form-page__error">{error}</p>} */}
         <p className="form-page__info">
-          Already have an account?
+          {I18n.t('page.sign-up.formInfo.header')}
           <br />
           <Link to="/signin" className="form-page__link">
-            Sign in
+            {I18n.t('page.sign-up.formInfo.link')}
           </Link>
         </p>
       </div>

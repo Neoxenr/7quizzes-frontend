@@ -1,0 +1,37 @@
+{
+  "layout": {
+    "header": {
+      "rules": "Game rules",
+      "points": "Points: "
+    }
+  },
+  "page": {
+    "game": {
+      "question": {
+        "questionTitle": "Question",
+        "questionAnswer": "Answer",
+        "questionNext": "Next"
+      }
+    },
+    "game-finish": {
+      "buttonAgain": "Play again"
+    },
+    "game-start": {
+      "buttonStart": "Start"
+    },
+    "sign-in": {
+      "buttonConfirm": "Sign in",
+      "formInfo": {
+        "header": "Don’t have an account yet?",
+        "link": "Sign up"
+      }
+    },
+    "sign-up": {
+      "buttonConfirm": "Sign up",
+      "formInfo": {
+        "header": "Already have an account?",
+        "link": "Sign in"
+      }
+    }
+  }
+}

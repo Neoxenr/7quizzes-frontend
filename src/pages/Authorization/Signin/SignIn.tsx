@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-
+import { I18n } from 'react-redux-i18n';
 import { Form, Input } from 'antd';
-
 import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { useSignInMutation } from '../../../api';
@@ -83,17 +82,17 @@ function SignIn() {
                   disabled={!formIsFilled}
                   className="form__button"
                 >
-                  Sign in
+                  {I18n.t('page.sign-in.buttonConfirm')}
                 </Button>
               );
             }}
           </Form.Item>
         </Form>
         <p className="form-page__info">
-          Don’t have an account yet?
+          {I18n.t('page.sign-in.formInfo.header')}
           <br />
           <Link to="/signup" className="form-page__link">
-            Sign up
+            {I18n.t('page.sign-in.formInfo.link')}
           </Link>
         </p>
       </div>
