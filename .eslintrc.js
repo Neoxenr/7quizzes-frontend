@@ -5,9 +5,14 @@ module.exports = {
     es6: true,
     jest: true,
   },
-  parser: '@babel/eslint-parser',
-  plugins: ['react', 'react-hooks'],
-  extends: ['airbnb', 'plugin:react/recommended'],
+  parser: '@typescript-eslint/parser',
+  plugins: ['react', 'react-hooks', '@typescript-eslint'],
+  extends: [
+    'airbnb',
+    'plugin:react/recommended',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
   parserOptions: {
     ecmaVersion: 6,
     ecmaFeatures: {
@@ -15,6 +20,7 @@ module.exports = {
     },
     sourceType: 'module',
     requireConfigFile: false,
+    parser: '@babel/eslint-parser',
     babelOptions: {
       presets: ['@babel/preset-react'],
     },
@@ -23,6 +29,7 @@ module.exports = {
     'import/resolver': {
       node: {
         paths: ['.'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
   },
@@ -74,6 +81,6 @@ module.exports = {
     'jsx-a11y/label-has-associated-control': 'off',
     'react/function-component-definition': 'off',
     'arrow-parens': 'off',
-    'default-param-last': 'off'
+    'default-param-last': 'off',
   },
 };
