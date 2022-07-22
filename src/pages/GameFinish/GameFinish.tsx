@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import { I18n } from 'react-redux-i18n';
 import { useNavigate } from 'react-router-dom';
 
 import Button from '../../components/Button/Button';
@@ -15,7 +16,7 @@ function GameFinish(): ReactElement {
           navigate('/', { replace: true });
         }}
       >
-        Play again
+        {I18n.t('page.game-finish.buttonAgain')}
       </Button>
     </>
   );

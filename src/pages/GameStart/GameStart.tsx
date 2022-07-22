@@ -2,6 +2,7 @@
 import React, { FC, ReactElement, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { I18n } from 'react-redux-i18n';
 
 import Rules from '../../components/Rules/Rules';
 import Button from '../../components/Button/Button';
@@ -53,7 +54,7 @@ const GameStart: FC = (): ReactElement => {
       <header className="guide__title">Game rules</header>
       <Rules rules={getRulesDto?.rules} />
       <Button disabled={isDisabled} onClick={handleClick}>
-        Start
+        {I18n.t('page.game-start.buttonStart')}
       </Button>
     </div>
   );
